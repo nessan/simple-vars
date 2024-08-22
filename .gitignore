@@ -1,0 +1,8 @@
+# Set up the folders/files that should never go into the git repository.
+
+.DS_Store
+.vscode/
+private/
+.luarc.json
+
+/.luarc.json

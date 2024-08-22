@@ -1,0 +1,24 @@
+# Simplest substitution
+a-name: "a value"
+
+# Substitution with formatting
+var-file: "`_variables.yml`"
+
+# Substitution with links
+quarto: "[Quarto](https://quarto.org)"
+asciidoc: "[AsciiDoc](https://asciidoc.org)"
+attributes: "[attributes](https://docs.asciidoctor.org/asciidoc/latest/attributes/document-attributes/)"
+
+# A couple of equations
+eqn:
+    x-squared: $x^2$
+    y-squared: $y = x^2 + 2x + 1$
+
+# A list of fruits
+fruits:
+    - apples
+    - pears
+    - oranges
+
+# A target URL in a link
+google-url: "https://google.com"

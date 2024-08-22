@@ -1,0 +1,6 @@
+project:
+    title: "example"
+
+filters:
+    - simple-vars
+  

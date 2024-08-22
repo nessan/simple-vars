@@ -1,0 +1,73 @@
+---
+title: "The `simple-vars` Extension"
+---
+
+## Introduction
+
+Quarto supports the idea of *variables* defined in a project level {var-file} file.
+There is one of those files in this directory that has content like this:
+
+```yaml
+# Simplest substitution
+a-name: "a value"
+
+# Substitution with formatting
+var-file: "`_variables.yml`"
+
+# Substitution with links
+quarto: "[Quarto](https://quarto.org)"
+asciidoc: "[AsciiDoc](https://asciidoc.org)"
+attributes: "[attributes](https://docs.asciidoctor.org/asciidoc/latest/attributes/document-attributes/)"
+
+# A couple of equations
+eqn:
+    x-squared: $x^2$
+    y-squared: $y = x^2 + 2x + 1$
+
+# A list of fruits
+fruits:
+    - apples
+    - pears
+    - oranges
+
+# A target URL in a link
+google-url: "https://google.com"
+```
+
+Canonically you use the `var` shortcode to access variable values in markup.
+
+For example, you can type `{{{< var a-name >}}}` to get {{< var a-name >}}.
+
+However, using variables in this manner pollutes your markup with a lot of `{{{< var ... >}}}` references.
+
+{asciidoc} also has the idea of name-value pairs which they refer to as {attributes}.
+In their version of markup you can use the simpler `{quarto}` instead of that wordier `{{{< var quarto >}}}`.
+
+The `simple-vars` extension lets you use the clean AsciiDoc `{name}` variable style in all your `qmd` files.
+The variable definitions still come from the same source --- it is just the way you reference them becomes simpler.
+
+For example, we can now type `{asciidoc}` to get {asciidoc}.
+
+Contrast that to typing `{{{< var quarto >}}}` to get {{< var quarto >}}.
+
+::: {.callout-note}
+# The aim is clean markup
+The aim here is to make the *markup* you write as simple as possible --- the output is the same whether you use this  `{...}` style or the `{{{< var ... >}}}` one.
+You can even mix both styles in one document.
+:::
+
+## Variable Definitions
+
+The variable definitions in the {var-file} file can be quite complicated and contain arbitrary styling:
+
+For example, a mathematical equation, so `{eqn.x-squared}` is rendered as {eqn.x-squared}, while `{eqn.y-squared}` is rendered as {eqn.y-squared}`.
+
+Variables can also be lists.
+
+For example, we have a list of fruits in {var-file} and can reference the second fruit `{fruits.2}` to get '{fruits.2}'.
+
+The `simple-vars` extension also handles situations where the variables are surrounded by other text.
+
+For example, `{{{quarto}}}` gets rendered as {{quarto}} and ` 12{quarto}34` as  12{quarto}34.
+This can be handy for URLs.
+For example, `[Google]({google-url})` gets rendered as a correct link to [Google]({google-url}).
