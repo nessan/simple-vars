@@ -32,14 +32,14 @@ It eliminates the need for all the extra braces, etc. Your markup is cleaner, bu
 
 ## Installing
 
+The command
+
 ```bash
 quarto add nessan/simple-vars
 ```
 
-This will install the extension under the `_extensions` subdirectory.
-You should check in this directory if you're using version control.
-
-Once it is installed, you add the extension as a filter in your `_quarto.yml` file as usual:
+installs the extension under the `extensions` subdirectory, which should be checked in if you use version control.
+Once it is installed, you add the extension as a filter in your `_quarto.yml` file as usual
 
 ```yml
 filters:
